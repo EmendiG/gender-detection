@@ -6,13 +6,7 @@ import java.util.stream.Collectors;
 
 public class StringParser {
 
-    private String names;
-
-    public StringParser(String names) {
-        this.names = names;
-    }
-
-    public List<String> parseName(String separator) {
+    public static List<String> parseName(String names, String separator) {
         return Arrays.stream( names.split(separator) )
                 .map(String::toLowerCase)
                 .collect(Collectors.toList());

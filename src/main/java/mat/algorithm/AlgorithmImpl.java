@@ -8,9 +8,10 @@ import mat.parser.StringParser;
 import java.util.List;
 
 public class AlgorithmImpl implements Algorithm {
+
     @Override
     public Gender findGender(String paramName) {
-        List<String> searchedNames = new StringParser(paramName).parseName("%20");
+        List<String> searchedNames = StringParser.parseName(paramName,"%20");
 
         FileParser fileParser = new FileParserImpl();
         long femaleCount = fileParser.howManyNamesFoundByGender(Gender.FEMALE, searchedNames);
@@ -20,6 +21,6 @@ public class AlgorithmImpl implements Algorithm {
         } else {
             return Gender.MALE;
         }
-
     }
+
 }

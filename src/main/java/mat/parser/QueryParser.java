@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class QueryParser {
 
-    public Map<String, String> parseQueryToParams(String query) {
+    public static Map<String, String> parseQueryToParams(String query) {
         return Arrays.stream(query.split("(\\?)|(&)"))
                 .map(param -> param.split("="))
                 .filter(entry -> entry.length > 1)

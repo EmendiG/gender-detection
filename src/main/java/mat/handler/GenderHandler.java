@@ -15,7 +15,7 @@ public class GenderHandler implements HttpHandler {
 
     @Override
     public void handle(HttpExchange http) {
-        Map<String, String> queryParams = new QueryParser().parseQueryToParams(http.getRequestURI().toString());
+        Map<String, String> queryParams = QueryParser.parseQueryToParams(http.getRequestURI().toString());
         Algorithm algorithm = new AlgorithmImpl();
         Gender gender = algorithm.findGender(queryParams.get("name"));
 
@@ -25,9 +25,8 @@ public class GenderHandler implements HttpHandler {
             os.write(gender.toString().getBytes());
             os.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            e.getStackTrace();
         }
-
     }
 
 }
