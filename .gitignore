@@ -3,3 +3,4 @@
 build
 female.txt
 male.txt
+!/src/main/resources/*
