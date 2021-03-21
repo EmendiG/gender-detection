@@ -51,7 +51,7 @@ public class AlgorithmImpl implements Algorithm {
         long sum = 0;
         sum = fileParser.getFileStream()
             .map(String::toLowerCase)
-            .takeWhile(s -> searchedNames.size() > 0)
+            .takeWhile(s ->  (searchedNames.size() > 0) )
             .filter(token -> {
                 boolean nameFound = searchPredicate.isSearchedName(token, searchedNames);
                 if (nameFound) {
@@ -64,7 +64,7 @@ public class AlgorithmImpl implements Algorithm {
     }
 
     /**
-     *  Check which predicate should be instantiated based on algorithm that was chosen in URI
+     *  Check which predicate should be instantiated based on algorithm string that was passed in URI
      */
     private SearchPredicate initChosenAlgorithm(String pickedAlgorithm) {
         switch (pickedAlgorithm) {
