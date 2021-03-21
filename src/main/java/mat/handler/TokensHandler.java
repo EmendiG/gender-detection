@@ -14,6 +14,9 @@ import java.util.stream.Stream;
 
 public class TokensHandler implements HttpHandler {
 
+    /**
+     *   Handle the given request and generate an appropriate response
+     */
     @Override
     public void handle(HttpExchange http) {
 
@@ -25,8 +28,9 @@ public class TokensHandler implements HttpHandler {
         Stream<String> fileStream = fileParser.getFileStream();
 
         try {
-            http.sendResponseHeaders(200, numberOfCharacters);
+            http.sendResponseHeaders(200, numberOfCharacters );
             OutputStream os = http.getResponseBody();
+
             fileStream.forEach(line -> {
                 try {
                     os.write(line.getBytes());

@@ -13,14 +13,11 @@ import java.util.Map;
 
 public class GenderHandler implements HttpHandler {
 
+    /**
+     *   Handle the given request and generate an appropriate response
+     */
     @Override
     public void handle(HttpExchange http) {
-
-//        String encoding = "UTF-8";
-//        http.getResponseHeaders().set("Content-Type", "text/html; charset=" + encoding);
-
-//        String encode = URLDecoder.decode(http.getRequestURI().toString(), StandardCharsets.UTF_8);
-//        System.out.println(encode);
 
         // parse parameters from URI
         Map<String, String> queryParams = QueryParser.parseQueryToParams(http.getRequestURI().toString());
@@ -28,7 +25,7 @@ public class GenderHandler implements HttpHandler {
         Gender foundGender = algorithm.findGender(queryParams.get("name"), queryParams.get("algorithm"));
 
         try  {
-            http.sendResponseHeaders(200, foundGender.toString().length());
+            http.sendResponseHeaders(200, foundGender.toString().length() );
             OutputStream os = http.getResponseBody();
             os.write(foundGender.toString().getBytes());
             os.close();

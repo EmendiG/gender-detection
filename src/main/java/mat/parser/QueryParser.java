@@ -6,6 +6,9 @@ import java.util.stream.Collectors;
 
 public class QueryParser {
 
+    /**
+     *  Parse given URI parameters string to get all mapped parameters ?[param1]=[value1]&[param2]=[value2]
+     */
     public static Map<String, String> parseQueryToParams(String query) {
         return Arrays.stream(query.split("(\\?)|(&)"))
                 .map(param -> param.split("="))
