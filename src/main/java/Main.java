@@ -16,10 +16,12 @@ public class Main {
         HttpHandler genderHandler = new GenderHandler();
         HttpHandler tokensHandler = new TokensHandler();
 
+
         HttpServer server = HttpServer.create(new InetSocketAddress(HOSTNAME, PORT), BACKLOG);
         server.createContext("/gender", genderHandler);
         server.createContext("/tokens", tokensHandler);
         server.setExecutor(null);
         server.start();
+
     }
 }

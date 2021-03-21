@@ -2,8 +2,14 @@ package mat.algorithm;
 
 import mat.Gender;
 
+import java.util.List;
+
 public interface Algorithm {
 
-    Gender findGender(String paramName);
+    long howManyNamesFoundByGender(
+            Gender pickedGender,
+            List<String> searchedNames,
+            SearchPredicate searchPredicate);
+    Gender findGender(String paramName, String paramAlgorithm);
 
 }

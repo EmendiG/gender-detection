@@ -10,6 +10,7 @@ public class QueryParser {
         return Arrays.stream(query.split("(\\?)|(&)"))
                 .map(param -> param.split("="))
                 .filter(entry -> entry.length > 1)
+                .peek(entry -> System.out.println(Arrays.toString(entry)))
                 .collect(Collectors.toMap(entry -> entry[0].toLowerCase(), entry -> entry[1].toLowerCase()));
     }
 

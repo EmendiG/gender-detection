@@ -1,12 +1,10 @@
 package mat.parser;
 
-import mat.Gender;
-
-import java.util.List;
+import java.util.stream.Stream;
 
 public interface FileParser {
 
-    long howManyNamesFoundByGender(Gender pickedGender, List<String> searchedNames);
-    long getNumberOfCharacters(Gender pickedGender);
+    long getNumberOfCharacters();
+    Stream<String> getFileStream();
 
 }
