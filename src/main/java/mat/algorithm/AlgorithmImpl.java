@@ -23,7 +23,7 @@ public class AlgorithmImpl implements Algorithm {
         long femaleCount = howManyNamesFoundByGender(Gender.FEMALE, searchedNames, searchPredicate);
         long maleCount = 0L;
 
-        // check if there is a need to check men names or female names are more or equal to 50% of all passed names
+        // check if there is a need to check men names or female names are more than 50% of all passed names already
         if ( ( (double) initialSize - femaleCount) / initialSize >= 1.0 / 2.0 ) {
             maleCount = howManyNamesFoundByGender(Gender.MALE, searchedNames, searchPredicate);
         }
@@ -41,8 +41,7 @@ public class AlgorithmImpl implements Algorithm {
      *  Find how many tokens from specific Flat File may be
      *  found within passed list of names
      */
-    @Override
-    public long howManyNamesFoundByGender(
+    private long howManyNamesFoundByGender(
             Gender pickedGender,
             List<String> searchedNames,
             SearchPredicate searchPredicate) {

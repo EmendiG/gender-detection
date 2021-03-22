@@ -13,7 +13,7 @@ public class QueryParser {
         return Arrays.stream(query.split("(\\?)|(&)"))
                 .map(param -> param.split("="))
                 .filter(entry -> entry.length > 1)
-                .collect(Collectors.toMap(entry -> entry[0].toLowerCase(), entry -> entry[1].toLowerCase()));
+                .collect(Collectors.toMap(entry -> entry[0], entry -> entry[1] ));
     }
 
 }

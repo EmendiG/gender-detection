@@ -14,25 +14,6 @@ import java.util.stream.Stream;
 public class AlgorithmTest {
 
     @ParameterizedTest
-    @MethodSource("injectSearchPredicate")
-    void testHowManyNamesFoundByGender(SearchPredicate searchPredicate) {
-        List<String> searchedNames = new ArrayList<>(Arrays.asList("kamil", "marcin", "piotr"));
-        FileCreator fileCreator = new FileCreator();
-        String filePath = fileCreator.createFileWithGivenTokens(searchedNames, Gender.MALE);
-
-        // set up file Parser
-        Gender pickedGender = Gender.MALE;
-        List<String> searchedStringList = new ArrayList<>(Arrays.asList("marcin", "piotr"));
-        Algorithm algorithm = new AlgorithmImpl();
-
-        long males = algorithm.howManyNamesFoundByGender(pickedGender, searchedStringList, searchPredicate);
-        Assertions.assertNotEquals(0, males);
-
-        // cleaning after testing
-        fileCreator.deleteFileWithGivenPathString(filePath);
-    }
-
-    @ParameterizedTest
     @MethodSource("injectAlgorithmURIString")
     void testFindGender(String algorithmURIString) {
         List<String> searchedNames = new ArrayList<>(Arrays.asList("kamil", "marcin", "piotr"));
