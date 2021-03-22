@@ -4,7 +4,7 @@ import java.util.stream.Stream;
 
 public interface FileParser {
 
-    long getNumberOfCharacters();
+    long getNumberOfCharacters(String lineBreaker);
     Stream<String> getFileStream();
 
 }

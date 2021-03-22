@@ -24,13 +24,15 @@ public class FileParserImpl implements FileParser {
     /**
      *  Get length of all tokens + number of lines in the given Flat File
      */
-    public long getNumberOfCharacters() {
+    public long getNumberOfCharacters(String lineBreaker) {
         long countedLines = 0;
         long allNamesLength = 0;
         Iterator<String> iterator = getFileStream().iterator();
         while (iterator.hasNext()) {
-            countedLines ++;
-            allNamesLength += iterator.next().length();
+            // get bytes of every token
+            allNamesLength += iterator.next().getBytes(StandardCharsets.UTF_8).length;
+            // every lines ends with lineBreaker == "<br>" tag
+            countedLines += lineBreaker.length();
         }
         return countedLines + allNamesLength;
     }

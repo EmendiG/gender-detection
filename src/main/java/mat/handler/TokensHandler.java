@@ -9,6 +9,7 @@ import mat.parser.QueryParser;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -24,17 +25,19 @@ public class TokensHandler implements HttpHandler {
         Gender pickedGender = Gender.valueOf(queryParams.get("gender").toUpperCase());
 
         FileParser fileParser = new FileParserImpl(pickedGender);
-        long numberOfCharacters = fileParser.getNumberOfCharacters();
+        String lineBreaker = "<br>";
+        long numberOfCharacters = fileParser.getNumberOfCharacters(lineBreaker);
         Stream<String> fileStream = fileParser.getFileStream();
 
+        http.getResponseHeaders().set("Content-Type", "text/html; charset=UTF-8");
         try {
             http.sendResponseHeaders(200, numberOfCharacters );
             OutputStream os = http.getResponseBody();
 
             fileStream.forEach(line -> {
                 try {
-                    os.write(line.getBytes());
-                    os.write("\n".getBytes());
+                    os.write(line.getBytes(StandardCharsets.UTF_8));
+                    os.write(lineBreaker.getBytes());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
