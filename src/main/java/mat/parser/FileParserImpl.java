@@ -24,7 +24,7 @@ public class FileParserImpl implements FileParser {
     /**
      *  Get length of all tokens + number of lines in the given Flat File
      */
-    public long getNumberOfCharacters(String lineBreaker) {
+    public long getLengthOfLinesBytes(String lineBreaker) {
         long countedLines = 0;
         long allNamesLength = 0;
         Iterator<String> iterator = getFileStream().iterator();

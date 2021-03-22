@@ -1,11 +1,12 @@
 Gender detection project:<br><br>
-1) Endpoint /gender :
+
+1st endpoint **/gender** :
 - responsible for gender detection based on passed full name separated by anything that is not an alphabet letter and passed algorithm [list / first]
 - **list** algorithm takes into consideration all defined names
 - **first** algorithm takes only first name under consideration when determining gender
 - /gender?algorithm=**[algorithm]**&name=**[full name]**
-<br>
-2) Endpoint /tokens :
+
+2nd endpoint **/tokens** :
 - responsible for returning all available tokens for picked gender **[male / female]**
 - /tokens&gender=**[gender]**
 <br><br><br>

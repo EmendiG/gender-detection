@@ -16,6 +16,7 @@ import java.util.stream.Stream;
 public class TokensHandler implements HttpHandler {
 
     /**
+     *   /tokens?gender=[GENDER]
      *   Handle the given request and generate an appropriate response
      */
     @Override
@@ -26,12 +27,14 @@ public class TokensHandler implements HttpHandler {
 
         FileParser fileParser = new FileParserImpl(pickedGender);
         String lineBreaker = "<br>";
-        long numberOfCharacters = fileParser.getNumberOfCharacters(lineBreaker);
+        // get full size of response
+        long lengthOfLinesBytes = fileParser.getLengthOfLinesBytes(lineBreaker);
+        // get stream of Flat File lines
         Stream<String> fileStream = fileParser.getFileStream();
 
         http.getResponseHeaders().set("Content-Type", "text/html; charset=UTF-8");
         try {
-            http.sendResponseHeaders(200, numberOfCharacters );
+            http.sendResponseHeaders(200, lengthOfLinesBytes );
             OutputStream os = http.getResponseBody();
 
             fileStream.forEach(line -> {

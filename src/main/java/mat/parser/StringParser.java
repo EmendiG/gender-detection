@@ -12,6 +12,8 @@ public class StringParser {
      *  Parse given full name string by any non-alphabetic char
      */
     public static List<String> parseName(String names) {
+        // uri might contain encoded alphanumeric values
+        // that should be decoded but other delimiters should be replaced
         names = names
                 .replaceAll("[[^a-zA-Z0-9|%]+]", "-")
                 .replaceAll("%20", "-");

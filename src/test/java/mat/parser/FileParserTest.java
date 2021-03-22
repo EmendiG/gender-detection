@@ -21,7 +21,7 @@ public class FileParserTest {
         FileParser fileParser = new FileParserImpl(Gender.MALE);
 
         // 16 char + 3 lines
-        Assertions.assertEquals(16L + 4L*3, fileParser.getNumberOfCharacters("<br>"));
+        Assertions.assertEquals(16L + 4L*3, fileParser.getLengthOfLinesBytes("<br>"));
 
         // cleaning after testing
         fileCreator.deleteFileWithGivenPathString(filePath);

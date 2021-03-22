@@ -14,6 +14,7 @@ import java.util.Map;
 public class GenderHandler implements HttpHandler {
 
     /**
+     *   /gender?algorithm=[ALGORITHM]&name=[FULL NAME]
      *   Handle the given request and generate an appropriate response
      */
     @Override
